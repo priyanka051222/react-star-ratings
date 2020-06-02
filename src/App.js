@@ -4,7 +4,6 @@ import "./styles.css";
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello Guys</h1>
       <h2>React Star ratings!</h2>
       <StarRatings />
     </div>
@@ -31,7 +30,7 @@ const Star = props => {
         className="svg-icon"
         xmlns="http://www.w3.org/2000/svg"
         id="Capa_1"
-        enable-background="new 0 0 512.07 512.07"
+        enableBackground="new 0 0 512.07 512.07"
         height="512"
         viewBox="0 0 512.07 512.07"
         width="512"
@@ -45,19 +44,26 @@ const Star = props => {
 };
 
 const StarRatings = () => {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(-1);
   const [hoverState, setHoverState] = useState(0);
   const list = [1, 2, 3, 4, 5];
 
-  return list.map((item, index) => (
-    <Star
-      id={index}
-      rating={hoverState || rating}
-      onMouseEnter={() => {
-        setHoverState(index);
-      }}
-      onMouseLeave={() => setHoverState(0)}
-      onClick={() => setRating(index)}
-    />
-  ));
+  return (
+    <div>
+      {list &&
+        list.map((item, index) => (
+          <Star
+            key={index}
+            id={index}
+            rating={hoverState || rating}
+            onMouseEnter={() => {
+              setHoverState(index);
+            }}
+            onMouseLeave={() => setHoverState(0)}
+            onClick={() => setRating(index)}
+          />
+        ))}
+      <div>Ratings: {rating + 1}</div>
+    </div>
+  );
 };
