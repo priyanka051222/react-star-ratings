@@ -5,4 +5,6 @@
 
 .svg-icon {
   height: 32px;
+  display: inline-block;
+  width: 32px;
 }
